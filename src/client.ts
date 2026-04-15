@@ -65,6 +65,16 @@ export class ActiveCampaignClient {
     return this.handleResponse<T>(res);
   }
 
+  async patch<T = unknown>(path: string, body: unknown): Promise<T> {
+    const url = this.buildUrl(path);
+    const res = await fetch(url, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify(body),
+    });
+    return this.handleResponse<T>(res);
+  }
+
   async delete(path: string): Promise<void> {
     const url = this.buildUrl(path);
     const res = await fetch(url, {

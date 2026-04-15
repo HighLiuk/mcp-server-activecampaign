@@ -30,14 +30,14 @@ async function main(): Promise<void> {
     version: '1.0.0',
   });
 
-  // Register all 58 tools across 10 categories
+  // Register all 70 tools across 11 categories
   registerAllTools(server);
 
   const transport = new StdioServerTransport();
   await server.connect(transport);
 
   console.error('ActiveCampaign MCP Server running on stdio');
-  console.error('Tools: contacts(10), deals(9), lists(7), campaigns(5), automations(4), tags(4), custom_fields(7), accounts(6), forms(2), messages(4) = 58 total');
+  console.error('Tools: contacts(10), deals(9), lists(7), campaigns(5), automations(4), tags(4), custom_fields(7), accounts(6), forms(2), messages(4), account_custom_fields(12) = 70 total');
 }
 
 main().catch((err: unknown) => {
