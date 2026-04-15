@@ -15,7 +15,7 @@ export function registerAccountTools(server: McpServer): void {
       fieldFilters: z.array(z.object({
         conds: z.array(z.object({
           id: z.union([z.number(), z.string()]).describe('Custom field ID (number) or built-in field name (e.g. "account_url")'),
-          cond: z.enum(['contains', 'is-empty', 'is-not-empty']).describe('Filter condition'),
+          cond: z.string().describe('Filter condition: "contains", "is-empty", "is-not-empty" for text fields; "greater-than", "less-than" for date fields; other undocumented operators may also work'),
           value: z.string().optional().describe('Value to match (required for "contains")'),
         })).describe('Array of conditions (AND logic within a group)'),
       })).optional().describe('Filter accounts by custom field values (undocumented API feature used by the AC frontend). Each object is a condition group; conditions within a group use AND logic.'),
